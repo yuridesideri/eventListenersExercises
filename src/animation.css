@@ -1,0 +1,46 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.move-right{
+    transition-duration: 0.5s;
+}
+.move-left{
+    transition-duration: 0.5s;
+}
+.hovering-element:hover{
+    transition-duration: 0.5s;
+    transform: scale(120%);
+}
+.move-left:active{
+    transition-duration: 0s;
+    color: rgb(165, 165, 165);
+}
+.move-right:active{
+    transition-duration: 0s;
+    color: rgb(165, 165, 165);
+}

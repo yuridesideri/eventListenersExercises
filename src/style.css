@@ -1,0 +1,77 @@
+
+
+/*---------------------Section 1----------------------*/
+.logos-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+}
+.logos-container ion-icon{
+    font-size: 100px;
+}
+
+.whatsapp-logo{
+    display: flex;
+    width: 100px;
+    height: 100px;
+}
+.figma-logo{
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+.google-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.change-section-buttons{
+    position: absolute;
+    bottom: 30px;
+    right: 100px;
+}
+.change-section-buttons>ion-icon{
+    font-size: 30px;
+}
+.change-whatsapp-color{
+    color: #48C856;
+}
+
+
+
+.hidden{
+    display: none;
+}
