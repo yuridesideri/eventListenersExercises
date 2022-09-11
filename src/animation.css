@@ -1,13 +1,40 @@
+:root{
+    --moving-page-time: 2s;
+}
+
+
+@keyframes goToRightPageNew{
+    from {transform: translate(100vw);}
+    to {transform: translate(0vw);}
+}
+@keyframes goToLeftPageNew{
+    0%{transform: translate(-100vw);}
+    100%{transform: translate(0vw);}
+}
 
 
 
 
 
 
+.move-page-right-old{
+    transition-duration: var(--moving-page-time);
+    transform: translate(-100vw);
+}
+.move-page-right-new{
+    animation-duration: var(--moving-page-time);
+    animation-name: goToRightPageNew;
+}
 
 
-
-
+.move-page-left-old{
+    transition-duration: var(--moving-page-time);
+    transform: translate(100vw);
+}
+.move-page-left-new{
+    animation-duration: var(--moving-page-time);
+    animation-name: goToLeftPageNew;
+}
 
 
 

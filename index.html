@@ -10,7 +10,7 @@
     <title>Exercises</title>
 </head>
 <body>
-    <section class="exercise-1">
+    <section class="page loaded" name="page-1">
         <div class="logos-container">
             <div class="whatsapp-logo hovering-element">
                 <ion-icon name="logo-whatsapp"></ion-icon>
@@ -26,11 +26,13 @@
             </div>
         </div>
     </section>
-    <section class="exercise-2 hidden"></section>
-    <section class="exercise-3 hidden"></section>
+    <section name="page-2" class="page hidden">
+        Alguma coisa de Teste
+    </section>
+    <section name="page-3" class="page hidden"></section>
     <nav class="change-section-buttons">
-        <ion-icon class="move-left hovering-element" name="chevron-back-outline"></ion-icon>
-        <ion-icon class="move-right hovering-element" name="chevron-forward-outline"></ion-icon>
+        <ion-icon onclick="changePage('left')" class="move-left hovering-element" name="chevron-back-outline"></ion-icon>
+        <ion-icon onclick="changePage('right')" class="move-right hovering-element" name="chevron-forward-outline"></ion-icon>
     </nav>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

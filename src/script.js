@@ -1,3 +1,63 @@
+//-------------------Change-Pages --------------------------------//
+function changePage(direction)
+{
+    const navButtons = document.querySelector('.change-section-buttons');
+    navButtons.classList.add('lock-event');
+    const loadedPage = document.querySelector('.loaded');
+    const pageNum = parseInt(loadedPage.getAttribute('name').split('-')[1]);
+    const numOfPages = Array.from(document.querySelectorAll('.page')).reduce((acc, el) => acc+=1, 0);
+    console.log(pageNum);
+    let nextPage;
+    if (direction === 'right')
+    {
+        if (pageNum === numOfPages)
+        {
+            nextPage = document.querySelector(`[name=page-${1}]`);
+        }
+        else{
+            nextPage = document.querySelector(`[name=page-${pageNum + 1}]`);
+        }
+        nextPage.style.zIndex = '10';
+        loadedPage.style.zIndex = '9';
+        nextPage.classList.remove('hidden');
+        nextPage.classList.add('move-page-right-new');
+        loadedPage.classList.add('move-page-right-old');
+    }
+    else if (direction === 'left')
+    {
+        if (pageNum === 1)
+        {
+            nextPage = document.querySelector(`[name=page-${numOfPages}]`);
+        }
+        else{
+            nextPage = document.querySelector(`[name=page-${pageNum - 1}]`);
+        }
+        nextPage.style.zIndex = '10';
+        loadedPage.style.zIndex = '9';
+        nextPage.classList.remove('hidden');
+        nextPage.classList.add('move-page-left-new');
+        loadedPage.classList.add('move-page-left-old'); //Adicionar hidden e remover classes
+    }
+    else{
+        console.log('Entered wrong direction argument');
+    }
+    setTimeout(() => {nextPage.classList.remove('move-page-left-new');
+    nextPage.classList.remove('move-page-right-new');
+    nextPage.classList.add('loaded');
+    nextPage.removeAttribute('style');
+    loadedPage.classList.add('hidden');
+    loadedPage.classList.remove('loaded');
+    loadedPage.classList.remove('move-page-left-old');
+    loadedPage.classList.remove('move-page-right-old');
+    loadedPage.removeAttribute('style');
+    navButtons.classList.remove('lock-event');
+
+}, 2000)
+}
+
+
+
+
 // -------------------Section 1 ---------------------------------- //
 const google = document.querySelector('.google-logo');
 const whatsapp = document.querySelector('.whatsapp-logo');
