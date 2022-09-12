@@ -83,8 +83,9 @@ function changeAll(event) {
 
 
 //-------------------------Section 2------------------------------//
+let page2Element;
 putEventListenersOnChildrenInRealTime();
-
+let page2Remove = "page2Element.removeEventListener('click',handleEvent)" ;
 function change() {
     const color = '#FFFFFF';
     test.style.backgroundColor = color;
@@ -101,35 +102,48 @@ function colorizeAnimation(element){
     let randomNumberRGB = () => Math.round(Math.random()*255);
     const randomColor = `rgba(${randomNumberRGB()},${randomNumberRGB()},${randomNumberRGB()})`;
     element.style.backgroundColor = randomColor;
-    setTimeout( () => element.removeAttribute('style'), 1200);
+    setTimeout( () => element.removeAttribute('style'), 1000);
 }
 
+function getElements(e, parent){
+    parent.classList.add('lock-event');
+    let counter = -1;
+    let tmpNode = parent;
+    if (e.target === parent.children[0])
+    {
+        colorizeAnimation(e.target);
+        parent.classList.remove('lock-event');
+        return
+    }
+    let interval = setInterval ( () => {
+        tmpNode = tmpNode.children[0];
+        colorizeAnimation(tmpNode);
+        counter++;
+        if (tmpNode === e.target)
+        {
+            clearInterval(interval);
+            interval = setInterval ( () => {
+                        tmpNode = tmpNode.parentNode;
+                        colorizeAnimation(tmpNode);
+                        counter++;
+                        if (tmpNode === parent.children[0])
+                        {
+                            clearInterval(interval);
+                            parent.classList.remove('lock-event');
+                        }}, 1000);
+        }
+    }, 1000);
+} 
 
+function handleEvent(e)
+{
+    getElements(e, page2Element);
+}
 
 function putEventListenersOnChildrenInRealTime () {
     const parentElement = document.querySelector('.event-direction-container');
-        function getElements(e, parent){
-            let counter = 0;
-            let tmpNode = parent;
-            let interval = setInterval ( () => {
-                tmpNode = tmpNode.children[0];
-                colorizeAnimation(tmpNode);
-                counter++;
-                if (tmpNode === e.target)
-                {
-                    clearInterval(interval);
-                    interval = setInterval ( () => {console.log(tmpNode);
-                                tmpNode = tmpNode.parentNode;
-                                colorizeAnimation(tmpNode);
-                                counter++;
-                                if (tmpNode === parent.children[0])
-                                {
-                                    clearInterval(interval);
-                                }}, 1200);
-                }
-            }, 1200);
-        } 
-    parentElement.addEventListener('click',(e) => getElements(e, parentElement));
+    page2Element = parentElement;
+    page2Element.addEventListener('click',handleEvent);
 }
 
 
