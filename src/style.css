@@ -48,17 +48,100 @@ section[name = 'page-1']{
 section[name = 'page-2']{
     width: 100%;
     height: 100vh;
-    position:absolute;
+    position: absolute;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.event-direction-container{
+    width: 80%;
+    height: 50%;
+    position: relative;
+}
+.event-direction-children{
+    position: absolute;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 0px 3px white;
 
-
-
+}
+.children-1{
+    transition-duration: 0.6s;
+    left: 0%;
+    width: 18.5%;
+    height: 100%;
+}
+.children-2{
+    width: 100%;
+    height: 100%;
+    transform: translate(110%);
+    transition-duration: 0.6s;
+}
+.children-3{
+    width: 100%;
+    height: 100%;
+    transform: translate(110%);
+    transition-duration: 0.6s;
+}
+.children-4{
+    width: 100%;
+    height: 100%;
+    transform: translate(110%);
+    transition-duration: 0.6s;
+}
+.children-5{
+    width: 100%;
+    height: 100%;
+    transform: translate(110%);
+    transition-duration: 0.6s;
+}
+.capturing-phase-container{
+    margin-bottom: 40px;
+    font-size: 25px;
+    transition-duration: 0.6s;
+}
+.bubbling-phase-container{
+    margin-top: 40px;
+    font-size: 25px;
+    transition-duration: 0.6s;
+}
+section[name = 'page-2'] ion-icon{
+    transform: translate(0,15%);
+}
 
 /*--------------Section 3 -------------*/
 section[name = 'page-3']{
     width: 100%;
     height: 100vh;
     position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.page-3-title{
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+.page-3-container{
+    background-color: white;
+    height: 50%;
+    width: 80%;
+    display: grid;
+    box-sizing: border-box;
+    border: solid 3px white;
+    grid-template-columns:  repeat(15, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 2px;
+    transition-duration: 0.3s;
+}
+.page-3-inner-divs{
+    transition-duration: 0.3s;
+    background-color: #042a3c;
+}
+.page-3-container p{
+    font-size: 30px;
+
 }
 
 
@@ -96,7 +179,7 @@ section[name = 'page-3']{
 
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 .lock-event{
     pointer-events: none;

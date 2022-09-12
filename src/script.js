@@ -6,7 +6,6 @@ function changePage(direction)
     const loadedPage = document.querySelector('.loaded');
     const pageNum = parseInt(loadedPage.getAttribute('name').split('-')[1]);
     const numOfPages = Array.from(document.querySelectorAll('.page')).reduce((acc, el) => acc+=1, 0);
-    console.log(pageNum);
     let nextPage;
     if (direction === 'right')
     {
@@ -81,3 +80,76 @@ function changeAll(event) {
     changeWhatsapp();
     console.log(event);
 }
+
+
+//-------------------------Section 2------------------------------//
+putEventListenersOnChildrenInRealTime();
+
+function change() {
+    const color = '#FFFFFF';
+    test.style.backgroundColor = color;
+}
+
+function putEventListenersOnChildren () {
+    const elements = Array.from(document.querySelectorAll('.event-direction-children'));
+    elements.forEach(el => {el.addEventListener('click', (e) => colorizeAnimation(el));
+                el.addEventListener('click', (e) => {colorizeAnimation(el)}, true);})
+}
+
+
+function colorizeAnimation(element){
+    let randomNumberRGB = () => Math.round(Math.random()*255);
+    const randomColor = `rgba(${randomNumberRGB()},${randomNumberRGB()},${randomNumberRGB()})`;
+    element.style.backgroundColor = randomColor;
+    setTimeout( () => element.removeAttribute('style'), 1200);
+}
+
+
+
+function putEventListenersOnChildrenInRealTime () {
+    const parentElement = document.querySelector('.event-direction-container');
+        function getElements(e, parent){
+            let counter = 0;
+            let tmpNode = parent;
+            let interval = setInterval ( () => {
+                tmpNode = tmpNode.children[0];
+                colorizeAnimation(tmpNode);
+                counter++;
+                if (tmpNode === e.target)
+                {
+                    clearInterval(interval);
+                    interval = setInterval ( () => {console.log(tmpNode);
+                                tmpNode = tmpNode.parentNode;
+                                colorizeAnimation(tmpNode);
+                                counter++;
+                                if (tmpNode === parent.children[0])
+                                {
+                                    clearInterval(interval);
+                                }}, 1200);
+                }
+            }, 1200);
+        } 
+    parentElement.addEventListener('click',(e) => getElements(e, parentElement));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------Section 3 ---------------------------------//
+
+function solutionPage3 (){
+    const container = document.querySelector('.page-3-container');
+    container.addEventListener('click', (e) => colorizeAnimation(e.target));
+}
+
+
